@@ -1,10 +1,17 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage } from './utils.mjs';
 
+function renderCartContents() {
+  const cartItems = getLocalStorage('so-cart');
+  let htmlItems = cartItemTemplate(cartItems);
+  document.querySelector('.product-list').innerHTML = htmlItems;
+}
+/**** I undertand the error is because the "cartItems" is a object so I try to change
+ * because .map is for Array but I have questions is there other way to do
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
-}
+}*/
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
